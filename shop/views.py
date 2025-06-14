@@ -10,7 +10,7 @@ def shop_list(request):
     myfilter = ShopFilter(request.GET, queryset=products)  # 2. طبق الفلتر عليهم
     filtered_products = myfilter.qs  # 3. خزن النتيجة بعد الفلترة
 
-    paginator = Paginator(filtered_products, 5)  # 4. اعمل pagination بعد الفلترة
+    paginator = Paginator(filtered_products, 3)  # 4. اعمل pagination بعد الفلترة
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
