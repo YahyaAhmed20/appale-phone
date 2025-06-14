@@ -10,4 +10,4 @@ class ShopFilter(django_filters.FilterSet):
         model = Shop
         fields = '__all__'
         
-        exclude=['owner','image','updated_at','created_at','available_colors','description']
+        exclude=['owner','image','updated_at','created_at','available_colors','description','cost','discount','isNew','isBestSeller']

@@ -20,6 +20,21 @@ class Shop(models.Model):
     image = models.ImageField("Product Image", upload_to='products/')
     created_at = models.DateTimeField("Created At", auto_now_add=True)
     updated_at = models.DateTimeField("Updated At", auto_now=True)
+    active=models.BooleanField(default=True,verbose_name=(("Active")))
+    discount = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+        verbose_name="Discount Price",
+        default=0.00
+    )    
+    cost = models.DecimalField(
+    max_digits=5,
+    decimal_places=2,
+    verbose_name="Cost",
+    default=0.00  # أو أي قيمة منطقية تانية
+    )    
+    isNew=models.BooleanField(default=True ,verbose_name=(("New Product")))
+    isBestSeller=models.BooleanField(default=False ,verbose_name=(("Best Seller Product")))
 
     def __str__(self):
         return self.title
