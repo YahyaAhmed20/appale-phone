@@ -2,8 +2,9 @@
 {% load static %}
 {% block body %}
 
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 <!-- Start Banner Hero -->
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
@@ -18,12 +19,11 @@
                 <div class="container">
                     <div class="row justify-content-center align-items-center py-5 flex-column flex-lg-row-reverse">
                         <!-- الصورة يمين -->
-                        <div class="col-12 col-lg-6 text-center mb-4 mb-lg-0" style="background: transparent; box-shadow: none;">
-
-<img class="img-fluid w-100" src="{{ item.image.url }}" alt="{{ item.title }}" style="max-height: 500px; object-fit: contain; background-color: transparent;">
-</div>
+                        <div class="col-12 col-lg-6 text-center mb-4 mb-lg-0" data-aos="fade-left">
+                            <img class="img-fluid w-100" src="{{ item.image.url }}" alt="{{ item.title }}" style="max-height: 500px; object-fit: contain;">
+                        </div>
                         <!-- النص شمال -->
-                        <div class="col-12 col-lg-6 text-center text-lg-start">
+                        <div class="col-12 col-lg-6 text-center text-lg-start" data-aos="fade-right">
                             <div>
                                 <h1 class="h1 text-success fw-bold">{{ item.title }}</h1>
                                 {% if item.subtitle %}
@@ -47,117 +47,101 @@
         <i class="fas fa-chevron-right fa-2x text-dark"></i>
     </a>
 </div>
-
 <!-- End Banner Hero -->
 
 <!-- Start Categories of The Month -->
 <section class="container py-5">
-    <div class="row text-center pt-3">
+    <div class="row text-center pt-3" data-aos="fade-down">
         <div class="col-lg-6 m-auto">
             <h1 class="h1">الأقسام المميزة لهذا الشهر</h1>
             <p>
-               اخترنا لك أفضل عروض الهواتف والإكسسوارات الذكية، بتكنولوجيا متقدمة وأسعار تنافسية تناسب كل الاحتياجات.
-
+                اخترنا لك أفضل عروض الهواتف والإكسسوارات الذكية، بتكنولوجيا متقدمة وأسعار تنافسية تناسب كل الاحتياجات.
             </p>
         </div>
     </div>
-<div class="row">
-    {% for product in products %}
-        <div class="col-md-3 mb-4">
-            <div class="card h-100 text-center shadow-sm">
-                <!-- صورة المنتج -->
-                <a href="#">
-                    <div style="height: 220px; background-color: #f8f9fa;" class="d-flex justify-content-center align-items-center">
-                        <img src="{{ product.image.url }}" 
-                             class="img-fluid" 
-                             style="max-height: 100%; max-width: 100%; object-fit: contain;" 
-                             alt="{{ product.title }}">
-                    </div>
-                </a>
-                <!-- اسم المنتج -->
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.title }}</h5>
-                    
-                    <!-- زر Go to Shop -->
-                    <a href="{% url 'shop:shop_list' %}" 
-                       class="btn btn-success mt-3 animate-button">
-                      تسوق الآن
-                    </a>
-                </div>
-            </div>
-        </div>
-    {% empty %}
-        <div class="col-12">
-            <p class="text-center">لا توجد منتجات متاحة حالياً.</p>
-        </div>
-    {% endfor %}
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0|add:'1' }}00">
+                <div class="card h-100 text-center shadow-sm">
+                    <a href="#">
+                        <div style="height: 270px; background-color: #f8f9fa;" class="d-flex justify-content-center align-items-center">
+    <img src="{{ product.image.url }}" class="img-fluid" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="{{ product.title }}">
 </div>
 
-<!-- أنيميشن للزر -->
-<style>
-.animate-button {
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
-}
-.animate-button:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 4px rgba(0, 128, 0, 0.4);
-}
-</style>
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.title }}</h5>
+                        <a href="{% url 'shop:shop_list' %}" class="btn btn-success mt-3 animate-button">تسوق الآن</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12 text-center">
+                <p>لا توجد منتجات متاحة حالياً.</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <style>
+    .animate-button {
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+    }
+    .animate-button:active {
+        transform: scale(0.95);
+        box-shadow: 0 2px 4px rgba(0, 128, 0, 0.4);
+    }
+    </style>
 </section>
-<!-- End Categories of The Month -->
+<!-- End Categories -->
 
 <!-- Start Featured Product -->
 <section class="bg-light py-5" id="why-choose-us" dir="rtl">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="h1 fw-bold text-success">لماذا تختارنا؟</h2>
-      <p class="text-muted">نحن نهتم بتجربتك — إليك الأسباب التي تجعل الآلاف يثقون بنا.</p>
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="h1 fw-bold text-success">لماذا تختارنا؟</h2>
+            <p class="text-muted">نحن نهتم بتجربتك — إليك الأسباب التي تجعل الآلاف يثقون بنا.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="p-4 shadow-sm rounded bg-white h-100">
+                    <i class="fa fa-shipping-fast fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">توصيل سريع</h5>
+                    <p class="text-muted small">نقوم بتوصيل المنتجات في غضون 48 ساعة بأمان كامل.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="p-4 shadow-sm rounded bg-white h-100">
+                    <i class="fa fa-shield-alt fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">ضمان موثوق</h5>
+                    <p class="text-muted small">جميع منتجاتنا مضمونة بغطاء حقيقي ضد العيوب.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="p-4 shadow-sm rounded bg-white h-100">
+                    <i class="fa fa-headset fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">دعم فني 24/7</h5>
+                    <p class="text-muted small">فريق دعم جاهز دائمًا لمساعدتك في أي وقت.</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="400">
+                <div class="p-4 shadow-sm rounded bg-white h-100">
+                    <i class="fa fa-credit-card fa-3x text-success mb-3"></i>
+                    <h5 class="fw-bold">طرق دفع متعددة</h5>
+                    <p class="text-muted small">ادفع بالطريقة التي تناسبك: كاش، فيزا، أو المحافظ الإلكترونية.</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row g-4">
-      <!-- الميزة 1 -->
-      <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="100">
-        <div class="p-4 shadow-sm rounded bg-white h-100">
-          <i class="fa fa-shipping-fast fa-3x text-success mb-3"></i>
-          <h5 class="fw-bold">توصيل سريع</h5>
-          <p class="text-muted small">نقوم بتوصيل المنتجات في غضون 48 ساعة بأمان كامل.</p>
-        </div>
-      </div>
-
-      <!-- الميزة 2 -->
-      <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="200">
-        <div class="p-4 shadow-sm rounded bg-white h-100">
-          <i class="fa fa-shield-alt fa-3x text-success mb-3"></i>
-          <h5 class="fw-bold">ضمان موثوق</h5>
-          <p class="text-muted small">جميع منتجاتنا مضمونة بغطاء حقيقي ضد العيوب.</p>
-        </div>
-      </div>
-
-      <!-- الميزة 3 -->
-      <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="300">
-        <div class="p-4 shadow-sm rounded bg-white h-100">
-          <i class="fa fa-headset fa-3x text-success mb-3"></i>
-          <h5 class="fw-bold">دعم فني 24/7</h5>
-          <p class="text-muted small">فريق دعم جاهز دائمًا لمساعدتك في أي وقت.</p>
-        </div>
-      </div>
-
-      <!-- الميزة 4 -->
-      <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="400">
-        <div class="p-4 shadow-sm rounded bg-white h-100">
-          <i class="fa fa-credit-card fa-3x text-success mb-3"></i>
-          <h5 class="fw-bold">طرق دفع متعددة</h5>
-          <p class="text-muted small">ادفع بالطريقة التي تناسبك: كاش، فيزا، أو المحافظ الإلكترونية.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- End Featured -->
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init();
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
 </script>
-<!-- End Featured Product -->
 
 {% endblock body %}
