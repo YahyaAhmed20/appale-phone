@@ -7,5 +7,6 @@ app_name = 'shop'
 urlpatterns = [
     path('', views.shop_list, name='shop_list'),  # URL for the job list view
   
+    path('<str:slug>/', views.shop_detail, name='shop_detail'),  # URL for the job detail view
 
 ]
