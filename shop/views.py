@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import Shop
 from django.core.paginator import Paginator
 # Create your views here.
+# from django.contrib.auth.decorators import login_required
+# @login_required
+
 from .filters import ShopFilter
 from django.shortcuts import render,get_object_or_404
 

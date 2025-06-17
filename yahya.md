@@ -1,7 +1,3 @@
-بكره هنشتغل علي shop _detail 
-
-ونربط كل حاجه  ب models 
-
 
 2 
 عايزين نضيف profile (signin and signup )

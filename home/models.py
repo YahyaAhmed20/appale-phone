@@ -41,4 +41,4 @@ class ShopSingle(models.Model):
 
     class Meta:
         verbose_name = "Product"
-        verbose_name_plural = "Product Management"
+        verbose_name_plural = "Featured Product"

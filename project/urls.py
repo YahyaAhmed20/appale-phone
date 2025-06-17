@@ -23,6 +23,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('allauth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
+
     
     path('', include('home.urls',namespace='home')),  # Include the job app's URLs
     path('shop/', include('shop.urls',namespace='shop')),  # Include the job app's URLs

@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block body %}
+<style>
+    .bradcam_area {
+        padding-top: 100px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .bradcam_text h2 {
+        font-size: 2.5rem;
+    }
+
+    @media (max-width: 768px) {
+        .profile-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .profile-image-container {
+            margin-bottom: 1rem;
+        }
+    }
+</style>
+
+<!-- =================== Hero Profile Area =================== -->
+<section class="bradcam_area bradcam_bg_1 bg-white text-white py-5">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="font-weight-bold">{{ job }}</h2>
+            <span class="badge bg-primary mt-3 px-3 py-2">Premium Member</span>
+        </div>
+    </div>
+</section>
+<!-- =================== /Hero Profile Area =================== -->
+
+<!-- =================== Profile Details Area =================== -->
+<section class="job_details_area py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow border-0 rounded-4 overflow-hidden">
+
+                    <!-- === Profile Header === -->
+                    <div class="profile-header bg-primary text-white p-4 d-flex align-items-center">
+                        <div class="profile-image-container me-4">
+                            {% if profile.image %}
+                                <img src="{{ profile.image.url }}" alt="Profile"
+                                     class="rounded-circle shadow-sm" style="width: 120px; height: 120px; object-fit: cover;">
+                            {% else %}
+                                <img src="{% static 'dist/img/photo1.png' %}" alt="Default"
+                                     class="rounded-circle shadow-sm" style="width: 120px; height: 120px; object-fit: cover;">
+                            {% endif %}
+                        </div>
+                        <div>
+                            <h3 class="fw-bold mb-1">{{ profile }}</h3>
+                            <span class="badge bg-light text-dark">
+                                <i class="fas fa-check-circle text-success me-1"></i> Verified Profile
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- === Profile Info === -->
+                    <div class="p-4">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="text-muted small">Full Name</label>
+                                <p class="fw-bold">{{ profile }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Email Address</label>
+                                <p class="fw-bold">{{ profile.user.email }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Phone Number</label>
+                                <p class="fw-bold">{{ profile.phone_number }}</p>
+                            </div>
+                        </div>
+
+                        <!-- === Premium Benefits === -->
+                        <div class="card bg-light border-0 mb-4">
+                            <div class="card-body">
+                                <h5 class="text-primary mb-3">
+                                    <i class="fas fa-star me-2"></i> Premium Benefits
+                                </h5>
+                                <div class="row">
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- === Actions === -->
+                        <div class="text-center">
+                            <a href="{% url 'accounts:profile_edit' %}" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-user-edit me-2"></i> Edit Profile
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}
