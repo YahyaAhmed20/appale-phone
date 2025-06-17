@@ -1,6 +1,4 @@
 
-2 
-عايزين نضيف profile (signin and signup )
 
 3 - 
 نضيف ف shop_detial button add to card 
