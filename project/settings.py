@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     'bootstrap4',
     'django_filters',
@@ -105,6 +106,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+)
 
 
 # Password validation
@@ -164,16 +170,18 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
-            'client_id': os.environ.get("GOOGLE_CLIENT_ID"),
-            'secret': os.environ.get("GOOGLE_CLIENT_SECRET"),
+            'client_id': '667352803940-n2mr6khev2m13givg06tiq6ii1ob3pvf.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
-        },
+            },
         'SCOPE': ['profile', 'email'],
         'AUTH_PARAMS': {'access_type': 'online'},
+        
     }
 }
+
 # شيلها عشان تشغل gmail علي python
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 # ,
 #         'SCOPE': ['profile', 'email'],
 #         'AUTH_PARAMS': {'access_type': 'online'},
@@ -190,6 +198,8 @@ ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 # ACCOUNT_SIGNUP_METHOD = 'email'  # استخدام البريد الإلكتروني فقط
 # ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # التأكد من أن المستخدمين يتأكدون من بريدهم الإلكتروني
+
+
 
 
 # حافظ على بقية الإعدادات:
