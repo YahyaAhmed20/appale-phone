@@ -1,0 +1,20 @@
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
+
+# Ignore environment variables
+.env
+
+# Ignore database
+*.sqlite3
+
+# Ignore IDE and OS files
+.vscode/
+*.log
+.DS_Store
+
+# Ignore media/uploads (optional)
+media/
+
+# Ignore static collected files (if using collectstatic)
+staticfiles/
