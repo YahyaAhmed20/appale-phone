@@ -14,7 +14,6 @@ class CarouselItemAdmin(admin.ModelAdmin):
 
 @admin.register(ShopSingle)
 class ShopSingleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price', 'brand', 'owner', 'rating')
+    list_display = ('title', 'owner')
     search_fields = ('title', 'brand', 'owner__username')
-    list_filter = ('brand', 'owner')
-    prepopulated_fields = {'description': ('title',)}  # اختياري
+    list_filter = ( 'owner',)

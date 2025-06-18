@@ -46,8 +46,8 @@
                 {{ field|add_class:"form-control" }}
               </div>
             {% endfor %}
-            <button type="submit" class="btn btn-primary w-100 mt-2">بحث</button>
-            <a href="{% url 'shop:shop_list' %}" class="btn btn-secondary w-100 mt-2">إعادة المحاولة</a>
+            <button type="submit" class="btn btn-primary w-100 mt-2">Search</button>
+            <a href="{% url 'shop:shop_list' %}" class="btn btn-secondary w-100 mt-2"> Retry</a>
           </form>
         </div>
       </div>
@@ -92,7 +92,8 @@
                     {% endif %}
                   </p>
                   <div>
-                    <a href="{% url 'shop:shop_detail' product.slug %}" class="btn btn-sm btn-outline-primary">المزيد من التفاصيل</a>
+                    <a href="{% url 'shop:shop_detail' product.slug %}" class="btn btn-sm btn-outline-primary">More details
+</a>
                   </div>
                 </div>
               </div>
@@ -145,7 +146,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init({
-    duration: 1000,
+    duration: 600,
     once: true
   });
 </script>

@@ -1,23 +1,14 @@
-# shop/templatetags/custom_filters.py
-
 from django import template
 
 register = template.Library()
 
-@register.filter(name='split_by')
-def split_by(value, arg):
-    """
-    Usage: {{ value|split_by:"," }}
-    """
-    if not value:
-        return []
-    return value.split(arg)
+@register.filter
+def split(value, delimiter=","):
+    return value.split(delimiter)
 
-
-
-from django import template
-
-register = template.Library()
+@register.filter
+def trim(value):
+    return value.strip()
 
 @register.filter
 def subtract(value, arg):
@@ -25,5 +16,9 @@ def subtract(value, arg):
         return float(value) - float(arg)
     except (ValueError, TypeError):
         return value
-    
-    
+
+@register.filter(name='split_by')
+def split_by(value, arg):
+    if not value:
+        return []
+    return value.split(arg)

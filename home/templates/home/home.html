@@ -53,9 +53,9 @@
 <section class="container py-5">
     <div class="row text-center pt-3" data-aos="fade-down">
         <div class="col-lg-6 m-auto">
-            <h1 class="h1">الأقسام المميزة لهذا الشهر</h1>
+            <h1 class="h1">Featured Categories This Month</h1>
             <p>
-                اخترنا لك أفضل عروض الهواتف والإكسسوارات الذكية، بتكنولوجيا متقدمة وأسعار تنافسية تناسب كل الاحتياجات.
+                We've selected the best deals on smartphones and smart accessories for you, featuring advanced technology and competitive prices to suit all needs.
             </p>
         </div>
     </div>
@@ -63,21 +63,20 @@
         {% for product in products %}
             <div class="col-md-3 mb-4" data-aos="zoom-in" data-aos-delay="{{ forloop.counter0|add:'1' }}00">
                 <div class="card h-100 text-center shadow-sm">
-                    <a href="#">
+                    <a href="{% url 'shop:shop_list' %}">
                         <div style="height: 270px; background-color: #f8f9fa;" class="d-flex justify-content-center align-items-center">
-    <img src="{{ product.image.url }}" class="img-fluid" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="{{ product.title }}">
-</div>
-
+                            <img src="{{ product.image.url }}" class="img-fluid" style="max-height: 100%; max-width: 100%; object-fit: contain;" alt="{{ product.title }}">
+                        </div>
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ product.title }}</h5>
-                        <a href="{% url 'shop:shop_list' %}" class="btn btn-success mt-3 animate-button">تسوق الآن</a>
+                        <a href="{% url 'shop:shop_list' %}" class="btn btn-success mt-3 animate-button">Shop Now</a>
                     </div>
                 </div>
             </div>
         {% empty %}
             <div class="col-12 text-center">
-                <p>لا توجد منتجات متاحة حالياً.</p>
+                <p>No products available at the moment.</p>
             </div>
         {% endfor %}
     </div>
@@ -93,47 +92,49 @@
     }
     </style>
 </section>
+
 <!-- End Categories -->
 
 <!-- Start Featured Product -->
-<section class="bg-light py-5" id="why-choose-us" dir="rtl">
+<section class="bg-light py-5" id="why-choose-us" dir="ltr">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="h1 fw-bold text-success">لماذا تختارنا؟</h2>
-            <p class="text-muted">نحن نهتم بتجربتك — إليك الأسباب التي تجعل الآلاف يثقون بنا.</p>
+            <h2 class="h1 fw-bold text-success">Why Choose Us?</h2>
+            <p class="text-muted">We care about your experience — here’s why thousands trust us.</p>
         </div>
         <div class="row g-4">
             <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="100">
                 <div class="p-4 shadow-sm rounded bg-white h-100">
                     <i class="fa fa-shipping-fast fa-3x text-success mb-3"></i>
-                    <h5 class="fw-bold">توصيل سريع</h5>
-                    <p class="text-muted small">نقوم بتوصيل المنتجات في غضون 48 ساعة بأمان كامل.</p>
+                    <h5 class="fw-bold">Fast Delivery</h5>
+                    <p class="text-muted small">We deliver products within 48 hours with full safety.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="p-4 shadow-sm rounded bg-white h-100">
                     <i class="fa fa-shield-alt fa-3x text-success mb-3"></i>
-                    <h5 class="fw-bold">ضمان موثوق</h5>
-                    <p class="text-muted small">جميع منتجاتنا مضمونة بغطاء حقيقي ضد العيوب.</p>
+                    <h5 class="fw-bold">Trusted Warranty</h5>
+                    <p class="text-muted small">All our products come with real coverage against defects.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="p-4 shadow-sm rounded bg-white h-100">
                     <i class="fa fa-headset fa-3x text-success mb-3"></i>
-                    <h5 class="fw-bold">دعم فني 24/7</h5>
-                    <p class="text-muted small">فريق دعم جاهز دائمًا لمساعدتك في أي وقت.</p>
+                    <h5 class="fw-bold">24/7 Support</h5>
+                    <p class="text-muted small">Our support team is always ready to assist you anytime.</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 text-center" data-aos="fade-up" data-aos-delay="400">
                 <div class="p-4 shadow-sm rounded bg-white h-100">
                     <i class="fa fa-credit-card fa-3x text-success mb-3"></i>
-                    <h5 class="fw-bold">طرق دفع متعددة</h5>
-                    <p class="text-muted small">ادفع بالطريقة التي تناسبك: كاش، فيزا، أو المحافظ الإلكترونية.</p>
+                    <h5 class="fw-bold">Multiple Payment Options</h5>
+                    <p class="text-muted small">Pay your way: cash, card, or digital wallets.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <!-- End Featured -->
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
