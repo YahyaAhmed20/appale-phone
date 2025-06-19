@@ -36,6 +36,7 @@
                                 <i class="fas fa-user me-2"></i>Profile
                             </a></li>
                            
+    <a href="{% url 'shop:my_orders' %}" class="btn btn-outline-secondary me-2">My Orders</a>
                             
                                 <form method="post" action="{% url 'account_logout' %}" class="d-inline">
                                     {% csrf_token %}
@@ -54,6 +55,11 @@
                 {% endif %}
             </div>
         </div>
-
+<a class="btn btn-outline-dark position-relative me-3" href="{% url 'shop:view_cart' %}">
+    <i class="fas fa-shopping-cart"></i> Cart
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill {% if cart_item_count > 0 %}bg-danger{% else %}bg-secondary{% endif %}">
+        {{ cart_item_count }}
+    </span>
+</a>
     </div>
 </nav>

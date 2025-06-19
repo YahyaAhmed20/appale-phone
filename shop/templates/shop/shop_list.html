@@ -5,6 +5,30 @@
 {% load bootstrap4 %}
 
 {% block body %}
+{% if messages %}
+  <div id="message-container" class="d-flex justify-content-center w-100 position-fixed top-0 start-0 p-3" style="z-index: 9999;">
+    <div style="min-width: 300px; max-width: 600px;">
+      {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show text-center shadow" role="alert">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      const container = document.getElementById('message-container');
+      if (container) {
+        container.classList.add('fade');
+        setTimeout(() => {
+          container.remove();
+        }, 500); // وقت الأنيميشن قبل الإزالة
+      }
+    }, 5000);
+  </script>
+{% endif %}
+
 
 
 

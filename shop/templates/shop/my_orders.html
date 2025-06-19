@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container mt-5">
+    <h2>My Orders</h2>
+    <table class="table table-bordered text-center align-middle mt-4">
+        <thead class="table-light">
+            <tr>
+                <th>Transaction ID</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.transaction_id }}</td>
+                    <td>${{ order.total }}</td>
+                    <td>
+                        {% if order.status == "pending" %}
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        {% elif order.status == "confirmed" %}
+                            <span class="badge bg-success">Confirmed</span>
+                        {% else %}
+                            <span class="badge bg-danger">Rejected</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ order.created_at|date:"Y-m-d H:i" }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No orders yet.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

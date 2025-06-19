@@ -27,16 +27,12 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
 
-    
-    path('', include('home.urls',namespace='home')),  # Include the job app's URLs
-    path('shop/', include('shop.urls',namespace='shop')),  # Include the job app's URLs
-
-    path('contact-us/', include('contact.urls',namespace='contact')),  # Include the job app's URLs
-
-
+    path('', include('home.urls', namespace='home')),  
+    path('shop/', include('shop.urls', namespace='shop')),  
+    path('contact-us/', include('contact.urls', namespace='contact')),
 ]
 
-# إعدادات الملفات الثابتة (في وضع التطوير)
+# إعدادات الملفات الثابتة
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
