@@ -35,11 +35,11 @@ if not DEBUG:
     warnings.filterwarnings("ignore", category=RuntimeWarning)
     DEFAULT_LOGGING['handlers']['console']['level'] = 'ERROR'
 
-ALLOWED_HOSTS = ["*"]
-# ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ["cosmatics-production.up.railway.app", "127.0.0.1", "localhost"]
 CSRF_TRUSTED_ORIGINS = [
     "https://cosmatics-production.up.railway.app",
 ]
+# ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
 
 # Application definition
 
