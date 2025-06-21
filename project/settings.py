@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 from decouple import config
-
+import warnings
+from django.utils.log import DEFAULT_LOGGING
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,6 +26,11 @@ SECRET_KEY = 'django-insecure-s%(jg+zwv3rq^q)gcpw7-p*^r6fij49@yggcl6sj)t#mhqmt6r
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+
+if not DEBUG:
+    warnings.filterwarnings("ignore", category=RuntimeWarning)
+    DEFAULT_LOGGING['handlers']['console']['level'] = 'ERROR'
 
 ALLOWED_HOSTS = ["*"]
 # ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
