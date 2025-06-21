@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-s%(jg+zwv3rq^q)gcpw7-p*^r6fij49@yggcl6sj)t#mhqmt6r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SILENCED_SYSTEM_CHECKS = ['templates.W003']
 
 if not DEBUG:
     warnings.filterwarnings("ignore", category=RuntimeWarning)
