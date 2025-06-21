@@ -55,6 +55,9 @@ INSTALLED_APPS = [
 
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    
+    'cloudinary',
+    'cloudinary_storage',
    
 
 
@@ -66,6 +69,7 @@ INSTALLED_APPS = [
     'contact',
 ]
 
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -105,6 +109,13 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'disv0yzel',
+    'API_KEY': '558685449993528',
+    'API_SECRET': 'ol-DZZrg9NdlzE9mzAtAgdL3Kw8',
+}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
