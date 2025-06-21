@@ -55,6 +55,8 @@ INSTALLED_APPS = [
 
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'cloudinary',
+    'cloudinary_storage',
 
 
     
@@ -100,7 +102,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'project.wsgi.application'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'disv0yzel',
+    'API_KEY': '558685449993528',
+    'API_SECRET': 'ol-DZZrg9NdlzE9mzAtAgdL3Kw8',
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
