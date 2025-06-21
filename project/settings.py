@@ -25,17 +25,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s%(jg+zwv3rq^q)gcpw7-p*^r6fij49@yggcl6sj)t#mhqmt6r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = True
+# DEBUG = config('DEBUG', default=False, cast=bool)
 
 
-SILENCED_SYSTEM_CHECKS = ['templates.W003']
+# SILENCED_SYSTEM_CHECKS = ['templates.W003']
 
-if not DEBUG:
-    warnings.filterwarnings("ignore", category=RuntimeWarning)
-    DEFAULT_LOGGING['handlers']['console']['level'] = 'ERROR'
+# if not DEBUG:
+#     warnings.filterwarnings("ignore", category=RuntimeWarning)
+#     DEFAULT_LOGGING['handlers']['console']['level'] = 'ERROR'
 
-ALLOWED_HOSTS = ["cosmatics-production.up.railway.app", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
     "https://cosmatics-production.up.railway.app",
 ]
