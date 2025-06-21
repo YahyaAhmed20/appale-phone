@@ -1,14 +1,19 @@
+{% load static %}
 <nav class="navbar navbar-expand-lg navbar-light shadow">
-    <div class="container d-flex justify-content-between align-items-center">
+    <div class="container-fluid">
 
-        <a class="navbar-brand text-success logo h1 align-self-center" href="/">
-            AppleZoone
+        <!-- Logo -->
+        <a class="navbar-brand text-success logo h1 align-self-center d-flex align-items-center" href="/">
+            <img src="{% static 'assets/img/yahya50.png' %}" alt="Logo" style="height: 100px; width: auto;">
+            <span style="color: black;">Apple</span>Zoone
         </a>
 
+        <!-- Toggle Button -->
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- Navigation & Auth Section -->
         <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
             <div class="flex-fill">
                 <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
@@ -24,8 +29,8 @@
                 </ul>
             </div>
 
-            <!-- User Authentication Dropdown -->
-            <div class="navbar align-self-center d-flex">
+            <!-- Authentication Buttons / Dropdown -->
+            <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
                 {% if user.is_authenticated %}
                     <div class="dropdown">
                         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,31 +40,33 @@
                             <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">
                                 <i class="fas fa-user me-2"></i>Profile
                             </a></li>
-                           
-    <a href="{% url 'shop:my_orders' %}" class="btn btn-outline-secondary me-2">My Orders</a>
-                            
+                            <li><a href="{% url 'shop:my_orders' %}" class="dropdown-item">
+                                <i class="fas fa-box me-2"></i>My Orders
+                            </a></li>
+                            <li>
                                 <form method="post" action="{% url 'account_logout' %}" class="d-inline">
                                     {% csrf_token %}
                                     <button type="submit" class="dropdown-item text-danger">
-                                        <i class="fas fa-sign-out-alt me-2"></i> Logout 
+                                        <i class="fas fa-sign-out-alt me-2"></i>Logout
                                     </button>
                                 </form>
                             </li>
                         </ul>
                     </div>
                 {% else %}
-                    <div class="d-flex gap-2">
-                        <a href="{% url 'account_login' %}" class="btn btn-success">Log in </a>
-                        <a href="{% url 'account_signup' %}" class="btn btn-outline-primary">Sign Up</a>
-                    </div>
+                    <a href="{% url 'account_login' %}" class="btn btn-success btn-sm">Log in</a>
+                    <a href="{% url 'account_signup' %}" class="btn btn-outline-primary btn-sm">Sign Up</a>
                 {% endif %}
+
+                <!-- Cart Button -->
+                <a class="btn btn-outline-dark position-relative ms-2" href="{% url 'shop:view_cart' %}">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill {% if cart_item_count > 0 %}bg-danger{% else %}bg-secondary{% endif %}">
+                        {{ cart_item_count }}
+                    </span>
+                </a>
             </div>
         </div>
-<a class="btn btn-outline-dark position-relative me-3" href="{% url 'shop:view_cart' %}">
-    <i class="fas fa-shopping-cart"></i> Cart
-    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill {% if cart_item_count > 0 %}bg-danger{% else %}bg-secondary{% endif %}">
-        {{ cart_item_count }}
-    </span>
-</a>
+
     </div>
 </nav>
