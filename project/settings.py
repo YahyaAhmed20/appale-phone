@@ -25,7 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-s%(jg+zwv3rq^q)gcpw7-p*^r6fij49@yggcl6sj)t#mhqmt6r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+
 
 # DEBUG = config('DEBUG', default=False, cast=bool)
 
@@ -137,15 +139,23 @@ CLOUDINARY_STORAGE = {
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'vgdZJoKXzouQMBFsIMCXFpxMNrfruQeP',
+#         'HOST': 'gondola.proxy.rlwy.net',
+#         'PORT': '40529',
+#     }
+# }
+
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'vgdZJoKXzouQMBFsIMCXFpxMNrfruQeP',
-        'HOST': 'gondola.proxy.rlwy.net',
-        'PORT': '40529',
-    }
+    'default': dj_database_url.config(
+        default='postgresql://postgres:vgdZJoKXzouQMBFsIMCXFpxMNrfruQeP@gondola.proxy.rlwy.net:40529/railway'
+    )
 }
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
