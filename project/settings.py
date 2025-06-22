@@ -132,25 +132,25 @@ CLOUDINARY_STORAGE = {
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'vgdZJoKXzouQMBFsIMCXFpxMNrfruQeP',
-        'HOST': 'gondola.proxy.rlwy.net',
-        'PORT': '40529',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': 'vgdZJoKXzouQMBFsIMCXFpxMNrfruQeP',
+#         'HOST': 'gondola.proxy.rlwy.net',
+#         'PORT': '40529',
+#     }
+# }
 
 # import dj_database_url
 
@@ -236,7 +236,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 # شيلها عشان تشغل gmail علي python
-# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 # ,
 #         'SCOPE': ['profile', 'email'],
 #         'AUTH_PARAMS': {'access_type': 'online'},
