@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-s%(jg+zwv3rq^q)gcpw7-p*^r6fij49@yggcl6sj)t#mhqmt6r
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 # DEBUG = config('DEBUG', default=False, cast=bool)
 
 
@@ -127,10 +128,23 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '558685449993528',
     'API_SECRET': 'ol-DZZrg9NdlzE9mzAtAgdL3Kw8',
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'vgdZJoKXzouQMBFsIMCXFpxMNrfruQeP',
+        'HOST': 'gondola.proxy.rlwy.net',
+        'PORT': '40529',
     }
 }
 AUTHENTICATION_BACKENDS = (
