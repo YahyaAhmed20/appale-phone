@@ -130,12 +130,12 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '558685449993528',
     'API_SECRET': 'ol-DZZrg9NdlzE9mzAtAgdL3Kw8',
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 
@@ -152,11 +152,24 @@ CLOUDINARY_STORAGE = {
 
 import dj_database_url
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:vgdZJoKXzouQMBFsIMCXFpxMNrfruQeP@gondola.proxy.rlwy.net:40529/railway'
-    )
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgresql://postgres:vgdZJoKXzouQMBFsIMCXFpxMNrfruQeP@gondola.proxy.rlwy.net:40529/railway'
+#     )
+# }
+DATABASE_URL = config('DATABASE_URL', default=None)
+
+if DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(default=DATABASE_URL)
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
