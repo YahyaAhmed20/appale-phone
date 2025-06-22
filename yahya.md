@@ -538,3 +538,52 @@ shop_list
 </script>
 
 {% endblock body %}
+
+
+
+
+
+
+checkout  
+
+كنت عايز اضيف صوره عشان احط فيها صوره vodafone cash {% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="container mt-5">
+    <h2 class="mb-4">Checkout - Vodafone Cash</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" name="name" required class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">Your Phone Number</label>
+            <input type="text" name="phone" required class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Send payment to:</label>
+            <div class="alert alert-info">
+    Vodafone Cash Number: <strong>01001404850</strong><br>
+    Amount: <strong>${{ total }}</strong>
+</div>
+        </div>
+        <div class="mb-3">
+    <label for="transaction_id" class="form-label">Transaction ID</label>
+    <input 
+        type="text" 
+        name="transaction_id" 
+        required 
+        class="form-control"
+        pattern="^[0-9]{8,12}$"
+        title="Transaction ID must be 8 to 12 digits"
+        maxlength="12"
+        minlength="8"
+    >
+</div>
+        <button type="submit" class="btn btn-success">Confirm Order</button>
+    </form>
+</div>
+{% endblock %}

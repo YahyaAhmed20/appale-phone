@@ -1,8 +1,7 @@
+
 {% extends 'base.html' %}
-
+{% load static %}
 {% block body %}
-
-
 <div class="container mt-5">
     <h2 class="mb-4">Checkout - Vodafone Cash</h2>
     <form method="post">
@@ -17,24 +16,27 @@
         </div>
         <div class="mb-3">
             <label class="form-label">Send payment to:</label>
-            <div class="alert alert-info">
-    Vodafone Cash Number: <strong>01001404850</strong><br>
-    Amount: <strong>${{ total }}</strong>
-</div>
+            <div class="alert alert-info text-center">
+                <!-- صورة Vodafone Cash -->
+                <img src="{% static 'assets/img/yu.jpg' %}" alt="Vodafone Cash" class="img-fluid mb-2" style="max-height: 150px;">
+                
+                <p class="mb-0">Vodafone Cash Number: <strong>01001404850</strong></p>
+                <p>Amount: <strong>${{ total }}</strong></p>
+            </div>
         </div>
         <div class="mb-3">
-    <label for="transaction_id" class="form-label">Transaction ID</label>
-    <input 
-        type="text" 
-        name="transaction_id" 
-        required 
-        class="form-control"
-        pattern="^[0-9]{8,12}$"
-        title="Transaction ID must be 8 to 12 digits"
-        maxlength="12"
-        minlength="8"
-    >
-</div>
+            <label for="transaction_id" class="form-label">Transaction ID</label>
+            <input 
+                type="text" 
+                name="transaction_id" 
+                required 
+                class="form-control"
+                pattern="^[0-9]{8,12}$"
+                title="Transaction ID must be 8 to 12 digits"
+                maxlength="12"
+                minlength="8"
+            >
+        </div>
         <button type="submit" class="btn btn-success">Confirm Order</button>
     </form>
 </div>
