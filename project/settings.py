@@ -81,7 +81,6 @@ INSTALLED_APPS = [
     'contact',
 ]
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,6 +129,9 @@ CLOUDINARY_STORAGE = {
     'API_KEY': '558685449993528',
     'API_SECRET': 'ol-DZZrg9NdlzE9mzAtAgdL3Kw8',
 }
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
