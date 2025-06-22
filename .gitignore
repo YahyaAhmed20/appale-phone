@@ -14,7 +14,7 @@ __pycache__/
 .DS_Store
 
 # Ignore media/uploads (optional)
-media/
+
 
 # Ignore static collected files (if using collectstatic)
 staticfiles/
