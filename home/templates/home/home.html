@@ -90,6 +90,28 @@
         transform: scale(0.95);
         box-shadow: 0 2px 4px rgba(0, 128, 0, 0.4);
     }
+    
+.animate-button {
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 128, 0, 0.2);
+}
+
+.animate-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0, 128, 0, 0.4);
+}
+
+/* هذا الكود تم تعديله لضمان تثبيت الأسهم */
+#template-mo-zay-hero-carousel {
+    position: relative;
+    /* يمكنك ترك min-height هنا لو لسه شايف إنها مفيدة للتحكم في الحجم الكلي */
+    /* min-height: 500px; */
+    height: 550px; /* <--- جرب تحديد ارتفاع ثابت للكاروسيل هنا */
+    overflow: hidden; /* <--- مهم لإخفاء أي محتوى يتجاوز الارتفاع المحدد */
+}
+
+
+
     </style>
 </section>
 

@@ -39,26 +39,42 @@
                     <input type="hidden" name="next" value="{{ next }}">
                 </form>
                 
-                <div class="text-center mt-3">
-                    <a href="" class="text-muted">{% trans "Forgot your password?" %}</a>
-                </div>
-                
+
+             
                 <div class="separator my-4">
                     <div class="line"></div>
                     <div class="separator-text">{% trans "or" %}</div>
                     <div class="line"></div>
                 </div>
+
+
+                  <div class="text-center mt-3">
+                    <p class="text-muted">{% trans "Make Your Account ? " %} <a href="{% url 'account_signup' %}">{% trans "Signup Here" %}</a></p>
+                </div>
+                {% comment %} Make Your Account ? Signup Here {% endcomment %}
+
+                    <div class="separator my-4">
+                    <div class="line"></div>
+                    <div class="separator-text">{% trans "or" %}</div>
+                    <div class="line"></div>
+                </div>
+                
                 
                 <div class="social-login text-center">
                     <p class="mb-3">{% trans "Sign in with "%}</p>
                     <a href="{% provider_login_url 'google' %}" class="btn btn-outline-secondary btn-google">
-                        <img src="{% static 'assets/img/s.JPEG' %}" alt="Google" width="18" height="18" class="mr-2">
+                        <img src="{% static 'images/s.jpeg' %}" alt="Google" width="18" height="18" class="mr-2">
                         {% trans "Sign in with Google" %}
                     </a>
                 </div>
                 
                 
                 <style>
+
+
+                    a[href="{% url 'account_reset_password' %}"] {
+    display: none;
+}
                     .separator {
                         display: flex;
                         align-items: center;
