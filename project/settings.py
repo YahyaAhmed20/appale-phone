@@ -40,7 +40,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
-    "https://appale-phone-production.up.railway.app",
+    "https://web-production-92303.up.railway.app",
 
 ]
 # ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
