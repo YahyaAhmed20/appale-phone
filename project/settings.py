@@ -162,12 +162,6 @@ DATABASES = {
 #     )
 # }
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-    
-)
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -221,54 +215,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
-ACCOUNT_EMAIL_VERIFICATION = "optional"
-SOCIALACCOUNT_QUERY_EMAIL = True
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        'APP': {
-            'client_id': '667352803940-n2mr6khev2m13givg06tiq6ii1ob3pvf.apps.googleusercontent.com',
-            'secret': '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',
-            'key': ''
-            },
+           
         'SCOPE': ['profile', 'email'],
-        'AUTH_PARAMS': {'access_type': 'online'},
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+            'prompt': 'select_account'  # ده بيخليك تختار من الجيميلات
+        },
         
     }
 }
 
-# شيلها عشان تشغل gmail علي python
-# ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
-# ,
-#         'SCOPE': ['profile', 'email'],
-#         'AUTH_PARAMS': {'access_type': 'online'},
 
 
 
-
-# بهذه الإعدادات الجديدة:
-# ACCOUNT_LOGIN_METHODS = {'email'}
-# ACCOUNT_SIGNUP_FIELDS = ['email*', 'username*', 'password1*', 'password2*']
-
-
-
-
-# ACCOUNT_SIGNUP_METHOD = 'email'  # استخدام البريد الإلكتروني فقط
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # التأكد من أن المستخدمين يتأكدون من بريدهم الإلكتروني
-
-
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'
 
 
 # حافظ على بقية الإعدادات:
 SITE_ID= 1
-
-LOGIN_REDIRECT_URL = '/'
-ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-ACCOUNT_EMAIL_VERIFICATION = 'optional'
-SOCIALACCOUNT_LOGIN_ON_GET = True
-
-ACCOUNT_AUTHENTICATED_REDIRECT_URL = '/'  # إعادة توجيه المستخدمين بعد تسجيل الدخول
-ACCOUNT_SIGNUP_REDIRECT_URL = '/'  # إعادة توجيه المستخدمين بعد التسجيل
 
 
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
@@ -277,3 +244,22 @@ EMAIL_HOST_USER ='yahmdh6@gmail.com'
 EMAIL_HOST_PASSWORD='nzmcfxgowwjxlofn'
 EMAIL_USE_TLS =True
 EMAIL_PORT= 587
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+
+SOCIALACCOUNT_ADAPTER = 'accounts.adapter.CustomSocialAccountAdapter'
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'  # بعد تسجيل الخروج، يعيد التوجيه إلى صفحة تسجيل الدخول
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+)
+ACCOUNT_SIGNUP_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_FIELDS = ['email', 'username*', 'password1*', 'password2*']
+
